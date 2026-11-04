@@ -1,6 +1,6 @@
 # Assistente Fiscal PT
 
-PWA de consulta e organização de fontes fiscais portuguesas. Código no GitHub, publicação independente através do **Cloudflare Pages**, no plano gratuito.
+PWA de consulta e organização de fontes fiscais portuguesas, preparada para publicação gratuita no **GitHub Pages**.
 
 ## Versão 0.1
 
@@ -13,19 +13,19 @@ PWA de consulta e organização de fontes fiscais portuguesas. Código no GitHub
 
 **Ainda não incluído:** importação automática de códigos, atualização legislativa automática, modelo de IA, sincronização entre dispositivos. Não confundir excertos encontrados com respostas fiscais validadas.
 
-## Publicação isolada (Cloudflare Pages)
+## Publicação com domínio GitHub independente
 
-**Não ativar GitHub Pages** neste repositório. As outras aplicações de `universidadechat-ux.github.io` partilham a origem do navegador; por isso esta PWA deve ser alojada num domínio `*.pages.dev` dedicado.
+**Não ativar GitHub Pages neste repositório da conta `universidadechat-ux` antes de decidir o domínio.** Se o publicarmos em `https://universidadechat-ux.github.io/assistente-fiscal/`, partilha a origem do navegador com as outras PWAs do mesmo utilizador.
 
-1. Iniciar sessão no [Cloudflare Dashboard](https://dash.cloudflare.com/) com uma conta gratuita.
-2. Abrir **Workers & Pages → Create application → Pages → Connect to Git**.
-3. Autorizar o acesso ao repositório GitHub `universidadechat-ux/assistente-fiscal`.
-4. Escolher o nome do projeto, por exemplo `assistente-fiscal-pt` (se estiver disponível), e a branch `main`.
-5. **Framework preset:** None; **Build command:** `exit 0` (sem compilação); **Build output directory:** `.`; **Root directory:** deixar a predefinição (raiz do repositório).
-6. Publicar. O endereço será comunicado pelo Cloudflare, normalmente `https://<nome-do-projeto>.pages.dev/`.
+Para obter isolamento de origem **sem sair do GitHub nem comprar domínio**, criar uma organização GitHub exclusiva para esta aplicação. A organização tem o seu próprio domínio `<organizacao>.github.io`, distinto de `universidadechat-ux.github.io`.
 
-Os caminhos do manifest, Service Worker e assets são relativos ao alojamento para permitir instalação na raiz de um domínio independente. O ficheiro `_headers` acrescenta proteções e impede a indexação normal pelos motores de pesquisa, mas **não torna a aplicação privada**.
+1. Criar uma organização gratuita e escolher o seu nome disponível.
+2. Criar nessa organização um repositório público chamado `<organizacao>.github.io` e colocar nele os ficheiros desta PWA.
+3. No novo repositório, ativar **Settings → Pages → Deploy from a branch → main → / (root)**.
+4. Abrir `https://<organizacao>.github.io/` e instalar a PWA a partir desse domínio, sem alterar as aplicações antigas.
+
+O `manifest.webmanifest`, os caminhos dos assets e o Service Worker usam caminhos relativos para funcionar na raiz deste domínio exclusivo. Um repositório separado, por si só, não equivale a um domínio separado.
 
 O repositório é público: não guardar nele chaves de API, dados pessoais ou documentos de clientes. O histórico e os textos adicionados pelo utilizador são locais ao navegador, devendo ser exportados periodicamente.
 
-Não exige Node.js ou instalação de ferramentas de desenvolvimento no computador. O armazenamento só fica efetivamente isolado das outras aplicações quando a PWA é aberta no seu domínio `*.pages.dev`, e não em `universidadechat-ux.github.io`.
+Não exige Node.js ou instalação de ferramentas de desenvolvimento no computador. O armazenamento fica separado das outras PWAs quando se usa a origem independente `<organizacao>.github.io`.
