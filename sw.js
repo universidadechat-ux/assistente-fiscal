@@ -1,5 +1,5 @@
-/* Cache e âmbito exclusivos do Assistente Fiscal PT. Não interfere com outras PWAs. */
-const CACHE_NAME = "assistente-fiscal-pt-shell-v1";
+/* O âmbito é o diretório desta PWA; só removemos caches com o nosso prefixo. */
+const CACHE_NAME = "assistente-fiscal-pt-shell-v2";
 const CACHE_PREFIX = "assistente-fiscal-pt-";
 const SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/icon.svg"];
 
